@@ -1,3 +1,5 @@
+@import 'bulma/css/bulma.css';
+
 .App {
   text-align: center;
 }
@@ -26,6 +28,35 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.tile.is-button-tile {
+  border-color: #4a4a4a;
+  color: #363636;
+  border-width: 1px;
+  justify-content: center;
+  text-align: center; 
+}
+
+.tile.is-button-tile:hover, .tile.is-button-tile.is-hovered {
+  background-color: #ffdc7d;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tile.is-button-tile:focus, .tile.is-button-tile.is-focused {
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.tile.is-button-tile:focus:not(:active), .tile.is-button-tile.is-focused:not(:active) {
+  box-shadow: 0 0 0 0.125em rgba(255, 224, 138, 0.25);
+}
+
+.tile.is-button-tile:active, .tile.is-button-tile.is-active {
+  background-color: #ffd970;
+  border-color: transparent;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 @keyframes App-logo-spin {
