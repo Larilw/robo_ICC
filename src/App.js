@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import {useEffect} from "react";
 import './App.css';
 
-const socket = io("192.168.1.2:3000");
+const socket = io("192.168.4.1:3000");
 var waterOn = false;
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
           <div class="container">
               <div class="navbar-brand">
                   <span class="navbar-item">
-                      Protótipo de robô extintor
+                      Plataforma de Controle - Protótipo de robô extintor
                   </span>
               </div>
           </div>
@@ -37,9 +37,12 @@ function App() {
       <section class="section">
         <div class="column is-8 is-offset-2">
             <div class="card">
+              <strong>Câmera</strong>
                 <div class="card-content has-text-centered">
                     <div class="media is-inline-block">
-                        Câmera será inserida aqui.
+                        <video controls muted>
+                          <source src = "https://192.168.4.1:8888/" type = "video/mp4; codecs=avc1.42E01E, mp4a.40.2"></source>
+                        </video>
                     </div>
                 </div>
             </div>
@@ -64,7 +67,10 @@ function App() {
                         console.log(ev);
                         socket.emit("controle", {x:ev.x, y:ev.y});
                       }}
-                      stop={(ev) => {}}>          
+                      stop={(ev) => {
+                        console.log(ev);
+                        socket.emit("controle", {x:0, y:0});
+                      }}>          
                     </Joystick>
                   </div>
                 </article>
@@ -98,7 +104,7 @@ function App() {
                       <p>Instruções de uso</p>
                     </div>
                     <div class="message-body">
-                        <span>Utilize o joystick para se movimentar.<br/>
+                        <span>Utilize o joystick para movimentar o robô.<br/>
                         Quando necessário, aperte o botão do extintor para ativá-lo.</span>
                     </div>
                 </article>
@@ -113,7 +119,7 @@ function App() {
       <footer class="footer">
         <div class="content has-text-centered">
           <p>
-            Projeto desenvolvido por <strong>Integrantes do grupo</strong>, para a disciplina de Introdução à Ciência da Computação no ano de 2022.
+            Projeto desenvolvido por <strong>Guilherme Kenzo Takano Miller e Larissa Lewartoski Wong</strong>, para a disciplina de Introdução à Ciência da Computação no ano de 2022.
           </p>
         </div>
       </footer>
